@@ -1,0 +1,97 @@
+{{#if memo}}
+  <div class="row">
+    {{#each memo}}
+      <div class="col-lg-6">
+        <div class="card" style="margin-bottom: 20px; ">
+          
+          <div class="card-body1">
+            <div class="card-body1">
+              <div style="width: 300px; text-align: left; " >{{this.title}}</div>
+              
+              <!--<h6 class="card-subtitle mb-2 text-muted">Дата создания: {{this.createdAt}}</h6>-->
+              
+              {{!-- <div style="display: flex; justify-content: space-around;"> --}}
+              <div><a href="/memo-list/detail/{{this.id}}">Детализация</a></div>
+              <button onclick="show_message2('Подтвердите удаление', 'remove({{this.id}})')" >
+                Удалить</button>
+              
+              
+            </div>
+            
+            <div id="s{{this.userId}}" style="display: none;">
+              <a href="/news/edit/{{this.id}}">Редактировать</a>
+              <a href="/news/delete/{{this.id}}">Удалить</a>
+            </div>
+            <div style="display: flex; justify-content: space-around;">
+              <div id="disp_com">
+            
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+       
+    {{/each}}
+    <div>
+              <a href="/memo-list/add">Добавить заметку</a>
+    </div>
+  </div>
+{{else}}
+  <h1>Список заметок пуст!</h1>
+{{/if}}
+
+<dialog id="dial" style=" z-index: 999999; ">
+  
+  <button onclick="close_dial()">Закрыть</button>
+</dialog>
+{{!-- <button id="open" onclick="show_dial()">Показать</button> --}}
+
+<!-- dialog -->
+<style>   
+  #dial {
+    width: 400px;
+    top: 20px;
+    position: fixed;
+    z-index: 999999;
+  }
+</style>
+
+<style>
+  .card-body1 {
+    width:  600px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex; 
+    justify-content: space-between;
+  }
+
+</style>
+
+
+
+
+<script>
+    //this.test = 'test';
+    
+    //console.log('id_user ', id_user);
+    //document.querySelectorAll("#edit").innerHTML=`<a href="/news/create/new">Добавить новость</a>`;
+    ///const elsP = document./*querySelector('#edit').*/querySelectorAll('#s'+id_user);
+    //console.log('elsP ', elsP);
+    //elsP.forEach((el) => {
+  
+  //el.style='display: flex; justify-content: space-around;';
+//});
+
+  function remove(id) {
+    console.log('id ', id);
+    //return;
+    window.location.href = `/memo-list/delete/${id}`;
+    window.location.href = `/memo-list`;
+  }
+    </script>
+  
+  <!-- dialog -->
+    
+
+
